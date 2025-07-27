@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Letter to My Cindy 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffe3f2, #ffc2dc);
+      font-family: 'Merriweather', serif;
+      padding: 50px;
+      color: #7a2140;
+      line-height: 1.9;
+      font-size: 1.3em;
+      text-align: justify;
+      overflow-y: auto;
+      position: relative;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    .letter-box {
+      background: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      background-color: #fffdf5;
+      background-blend-mode: multiply;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08), inset 0 0 30px rgba(255, 255, 240, 0.4);
+      max-width: 800px;
+      border: 2px solid #f3e2c7;
+      position: relative;
+      overflow-y: auto;
+      max-height: 80vh;
+      margin: 0 auto 20px auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 2.4em;
+      color: #b8336a;
+      font-family: 'Pacifico', cursive;
+      user-select: none;
+    }
+
+    .content {
+      white-space: pre-wrap;
+      min-height: 240px;
+      font-family: 'Merriweather', serif;
+      font-style: normal;
+      font-weight: 400;
+      color: #5b1e3a;
+    }
+
+    .signature {
+      margin-top: 1em;
+      font-family: 'Pacifico', cursive;
+      font-size: 2em;
+      color: #b8336a;
+      text-align: right;
+      user-select: none;
+      animation: sway 3s ease-in-out infinite;
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(0deg); }
+      50% { transform: rotate(2deg); }
+    }
+
+    .post-message {
+      text-align: center;
+      font-size: 1.2em;
+      font-family: 'Pacifico', cursive;
+      margin-top: 1.5em;
+      opacity: 0;
+      color: #b8336a;
+      text-shadow: 0 0 6px rgba(184, 51, 106, 0.3), 0 0 12px rgba(184, 51, 106, 0.2);
+      animation: fadein 2s ease forwards, glow 3s ease-in-out infinite;
+      transition: opacity 2s ease;
+    }
+
+    .post-message.show {
+      opacity: 1;
+    }
+
+    @keyframes fadein {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 6px rgba(184, 51, 106, 0.3), 0 0 12px rgba(184, 51, 106, 0.2);
+      }
+      50% {
+        text-shadow: 0 0 10px rgba(184, 51, 106, 0.5), 0 0 20px rgba(184, 51, 106, 0.3);
+      }
+    }
+
+    .flower {
+      position: fixed;
+      bottom: -40px;
+      font-size: 32px;
+      opacity: 0.85;
+      animation: floatUp linear forwards;
+      pointer-events: none;
+      user-select: none;
+      z-index: 1000;
+      will-change: transform, opacity;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.8);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-180px) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    .print-button {
+      display: block;
+      margin: 0 auto 30px auto;
+      padding: 10px 25px;
+      background-color: #b8336a;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      font-family: 'Pacifico', cursive;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+      box-shadow: 0 4px 10px rgba(184, 51, 106, 0.4);
+    }
+
+    .print-button:hover {
+      background-color: #912a51;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+        font-size: 1.1em;
+      }
+
+      .letter-box {
+        padding: 25px 20px;
+        max-width: 95vw;
+        max-height: 70vh;
+      }
+
+      h1 {
+        font-size: 1.5em;
+        margin-bottom: 16px;
+      }
+
+      .signature {
+        font-size: 1.4em;
+        margin-top: 2em;
+      }
+
+      .content {
+        min-height: auto;
+      }
+
+      .flower {
+        font-size: 24px;
+      }
+
+      .print-button {
+        font-size: 1em;
+        padding: 8px 20px;
+        border-radius: 15px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #fff8f5 !important;
+        color: #6b0a3d !important;
+        font-family: 'Merriweather', serif !important;
+        font-size: 14pt;
+        padding: 20mm;
+        margin: 0;
+      }
+
+      .print-button,
+      .flower,
+      .post-message {
+        display: none !important;
+      }
+
+      h1 {
+        display: block !important;
+        text-align: center;
+        font-family: 'Pacifico', cursive !important;
+        font-size: 28pt !important;
+        margin-bottom: 20px !important;
+        color: #a31545 !important;
+      }
+
+      .signature {
+        display: block !important;
+        font-family: 'Pacifico', cursive !important;
+        font-size: 22pt !important;
+        color: #a31545 !important;
+        text-align: right !important;
+        margin-top: 40px !important;
+      }
+
+      .letter-box {
+        box-shadow: 0 0 10px rgba(163, 21, 69, 0.3) !important;
+        border: 2px solid #f3e2c7 !important;
+        background-color: #fffdf5 !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        padding: 30px !important;
+        overflow: visible !important;
+        margin: 0 auto !important;
+        border-radius: 12px !important;
+      }
+
+      .content {
+        font-size: 16pt !important;
+        line-height: 1.7 !important;
+        color: #6b0a3d !important;
+        white-space: pre-wrap !important;
+      }
+    }
+  </style>
+</head>
+<body>
+<button class="print-button" onclick="window.print()">🖨️</button>
+
+  <div class="letter-box" id="letterBox">
+    <h1>To My One and Only Otter 🦦</h1>
+    <div class="content" id="letterContent"></div>
+    <div class="signature">— With all my love</div>
+    <div class="post-message" id="postMessage">You’re the reason I smile every day.</div>
+  </div>
+
+  <script>
+    const letterText = `My dear Cindy 💗 
+Since you came into my life, I’ve started to really get what love means.  
+Before, I just let time pass without much thought. But now, every day feels special — just because of you.  
+Seeing your smile, hearing your voice, hugging you,  
+being close to you — it feels like home.  
+You might not know how much you mean to me,  
+but you’re my world, my answer to feelings I never understood before.  
+You don’t have to change a thing. Just being you is enough for me to love you with all my heart.  
+I promise to take care of you, listen to you, and be there—on good days and tough days.  
+All I want is to have you by my side.  
+Thank you for being my everything.  
+Love you always 🦦💗`;
+
+    const contentEl = document.getElementById('letterContent');
+    let index = 0;
+
+    function typeLetter() {
+      if (index < letterText.length) {
+        contentEl.textContent += letterText.charAt(index);
+        index++;
+        setTimeout(typeLetter, 40);
+      } else {
+        document.getElementById('postMessage').classList.add('show');
+      }
+    }
+
+    window.onload = () => {
+      typeLetter();
+      spawnFlowers();
+    };
+
+    function spawnFlowers() {
+      const colors = ['💗', '🦦', '💕', '🦦', '💖'];
+      const flowerCount = 20;
+
+      for (let i = 0; i < flowerCount; i++) {
+        const flower = document.createElement('div');
+        flower.classList.add('flower');
+        flower.textContent = colors[Math.floor(Math.random() * colors.length)];
+        flower.style.left = (Math.random() * (window.innerWidth - 40)) + 'px';
+        flower.style.animationDuration = (6 + Math.random() * 4) + 's';
+        flower.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(flower);
+        flower.addEventListener('animationend', () => flower.remove());
+      }
+
+      setTimeout(spawnFlowers, 5000);
+    }
+  </script>
+</body>
+</html>

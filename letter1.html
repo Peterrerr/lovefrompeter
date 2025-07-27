@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Otter Bounce Love 💌</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffc1e3, #ff8fbd);
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      color: #a31545;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      /* 🔽 เพิ่ม fade-in effect */
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    body.fade-in {
+      opacity: 1;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 60px;
+      text-shadow: 1px 1px 2px rgba(255, 192, 203, 0.6);
+      z-index: 10;
+    }
+
+    .yes-btn {
+      font-size: 1.8em;
+      padding: 16px 36px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      background-color: #f06292;
+      color: white;
+      box-shadow: 0 6px 15px rgba(240, 98, 146, 0.7);
+      transition: background-color 0.3s ease;
+      user-select: none;
+      z-index: 10;
+      margin-bottom: 30px;
+    }
+
+    .yes-btn:hover {
+      background-color: #d81b60;
+      box-shadow: 0 8px 20px rgba(216, 27, 96, 0.8);
+    }
+
+    .message {
+      font-size: 1.6em;
+      color: #9c1450;
+      text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.7);
+      display: none;
+      z-index: 10;
+    }
+
+    .pixel-heart {
+      position: absolute;
+      width: 18px;
+      height: 16px;
+      background:
+        linear-gradient(to right, transparent 0%, transparent 33%, #ff5aa3 33%, #ff5aa3 66%, transparent 66%, transparent 100%) 3px 0/12px 4px no-repeat,
+        linear-gradient(to right, transparent 0%, transparent 20%, #ff5aa3 20%, #ff5aa3 40%, transparent 40%, transparent 60%, #ff5aa3 60%, #ff5aa3 80%, transparent 80%, transparent 100%) 0 4px/18px 4px no-repeat,
+        linear-gradient(to right, transparent 0%, transparent 33%, #ff5aa3 33%, #ff5aa3 66%, transparent 66%, transparent 100%) 3px 8px/12px 4px no-repeat,
+        linear-gradient(to right, #ff5aa3 0%, #ff5aa3 20%, transparent 20%, transparent 80%, #ff5aa3 80%, #ff5aa3 100%) 0 12px/18px 4px no-repeat;
+      filter: drop-shadow(0 0 1px #c70078);
+      user-select: none;
+      pointer-events: none;
+      opacity: 1;
+      animation: burstFloat 1.5s forwards;
+    }
+
+    @keyframes burstFloat {
+      0% { opacity: 1; transform: translate(0, 0) scale(1); }
+      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(1.4); }
+    }
+
+    @keyframes spinSlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .otter {
+      position: absolute;
+      font-size: 72px;
+      pointer-events: none;
+      user-select: none;
+      animation: spinSlow 8s linear infinite;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Do you love me? </h1>
+  <button class="yes-btn" onclick="showMessage()">Of course I do 💗</button>
+  <div class="message" id="message"></div>
+
+  <!-- Otters -->
+  <div class="otter" id="otter1">🦦</div>
+  <div class="otter" id="otter2">🦦</div>
+  <div class="otter" id="otter3">🦦</div>
+  <div class="otter" id="otter4">🦦</div>
+  <div class="otter" id="otter5">🦦</div>
+
+<script>
+  // เอฟเฟกต์ fade-in ทันทีเมื่อโหลดหน้า
+  window.addEventListener("DOMContentLoaded", () => {
+    document.body.classList.add("fade-in");
+  });
+
+  function showMessage() {
+    const msg = document.getElementById("message");
+    msg.textContent = "There is only one choice because you must love me 💕";
+    msg.style.display = "block";
+    createPixelHeartsBurst();
+
+    setTimeout(() => {
+      window.location.href = "letter2.html";
+    }, 3000);
+  }
+
+  function createPixelHeartsBurst() {
+    const btn = document.querySelector('.yes-btn');
+    const rect = btn.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top;
+
+    for (let i = 0; i < 10; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('pixel-heart');
+      const angle = Math.random() * 2 * Math.PI;
+      const distance = 60 + Math.random() * 60;
+      const tx = Math.cos(angle) * distance + 'px';
+      const ty = Math.sin(angle) * distance - 100 + 'px';
+      heart.style.setProperty('--tx', tx);
+      heart.style.setProperty('--ty', ty);
+      heart.style.left = `${centerX - 9}px`;
+      heart.style.top = `${centerY}px`;
+      document.body.appendChild(heart);
+      heart.addEventListener('animationend', () => heart.remove());
+    }
+  }
+
+  function makeOtterBounce(id, speed) {
+    const el = document.getElementById(id);
+    let x = Math.random() * window.innerWidth;
+    let y = Math.random() * window.innerHeight;
+    let dx = (Math.random() < 0.5 ? -1 : 1) * speed;
+    let dy = (Math.random() < 0.5 ? -1 : 1) * speed;
+
+    function move() {
+      x += dx;
+      y += dy;
+
+      if (x <= 0 || x + 72 >= window.innerWidth) dx *= -1;
+      if (y <= 0 || y + 72 >= window.innerHeight) dy *= -1;
+
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+
+      requestAnimationFrame(move);
+    }
+    move();
+  }
+
+  makeOtterBounce('otter1', 1.2);
+  makeOtterBounce('otter2', 1.5);
+  makeOtterBounce('otter3', 1.7);
+  makeOtterBounce('otter4', 1.9);
+  makeOtterBounce('otter5', 1.4);
+</script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Envelope Opening with Page Redirect</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sarabun&display=swap');
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Sarabun', sans-serif;
+      perspective: 1200px;
+      background: #ffe4ec;
+      transition: background 3s ease, opacity 1s ease;
+      user-select: none;
+      opacity: 1;
+    }
+    body.fade-out {
+      opacity: 0;
+    }
+    .envelope-container {
+      width: 320px;
+      height: 220px;
+      cursor: pointer;
+      position: relative;
+    }
+    .envelope-body {
+      width: 100%;
+      height: 100%;
+      background: #f8bbd0;
+      border-radius: 12px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 110px;
+      background: #f06292;
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transition: transform 1s ease;
+      z-index: 3;
+    }
+    .open .flap {
+      transform: rotateX(-165deg);
+    }
+    .hint {
+      position: absolute;
+      bottom: -40px;
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      color: #a13d6d;
+    }
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff0f6;
+      padding: 20px 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      font-size: 18px;
+      color: #d81b60;
+      font-weight: bold;
+      z-index: 999;
+      animation: fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translate(-50%, -40%);}
+      to {opacity: 1; transform: translate(-50%, -50%);}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Envelope -->
+  <div class="envelope-container" aria-label="Envelope" role="button" tabindex="0"
+    onclick="openLetter()" onkeypress="if(event.key==='Enter') openLetter()">
+    <div class="envelope-body">
+      <div class="flap"></div>
+    </div>
+    <div class="hint">Click the envelope to open the letter</div>
+  </div>
+
+  <!-- Popup -->
+  <div id="popup" class="popup" style="display:none;">
+    Put your heart into it! 💌<br>
+  </div>
+
+<script>
+  let alreadyOpened = false;
+
+  function openLetter() {
+    if (alreadyOpened) return;
+    alreadyOpened = true;
+
+    document.getElementById("popup").style.display = "block";
+
+    setTimeout(() => {
+      document.getElementById("popup").style.display = "none";
+      document.querySelector(".envelope-container").classList.add("open");
+
+      setTimeout(() => {
+        document.body.classList.add("fade-out"); // 🔸 เพิ่ม fade-out
+
+        setTimeout(() => {
+          window.location.href = "letter1.html"; // 🔸 redirect หลัง fade
+        }, 1000); // ต้องรอ 1 วิให้ fade-out เสร็จก่อน
+      }, 1100);
+    }, 2000);
+  }
+
+  // เปลี่ยนพื้นหลังแบบไล่พาสเทล
+  const pastelColors = ['#ffe4ec', '#f8bbd0', '#f3d1dc', '#f5e1ec', '#f8e6ef', '#f9c5d1', '#ecd4e6', '#fde3e9'];
+  let colorIndex = 0;
+  setInterval(() => {
+    document.body.style.background = pastelColors[colorIndex];
+    colorIndex = (colorIndex + 1) % pastelColors.length;
+  }, 4000);
+</script>
+</body>
+</html>
