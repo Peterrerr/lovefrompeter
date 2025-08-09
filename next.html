@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ครบรอบสี่เดือน 💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Pacifico', cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe6f0, #ffd1e8);
+      color: #b8336a;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.8;
+    }
+    h1 {
+      font-size: clamp(2rem, 1.5rem + 3vw, 3.5rem);
+      margin-bottom: 20px;
+    }
+    .line {
+      font-size: clamp(1.1rem, 1rem + 1vw, 1.6rem);
+      max-width: 700px;
+      margin: 0 auto 10px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .line.show {
+      opacity: 1;
+    }
+    .highlight {
+      color: #ff4f8b;
+      animation: glow 2s ease-in-out infinite, bounceIn 0.6s ease;
+      display: inline-block;
+    }
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 6px rgba(255, 79, 139, 0.4), 0 0 12px rgba(255, 79, 139, 0.3); }
+      50% { text-shadow: 0 0 12px rgba(255, 79, 139, 0.7), 0 0 24px rgba(255, 79, 139, 0.5); }
+    }
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    .btn {
+      padding: 10px 20px;
+      background-color: #b8336a;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(184, 51, 106, .3);
+      text-decoration: none;
+      transition: background-color .3s ease;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background-color: #912a51;
+    }
+    #surprise {
+      font-size: 1.4rem;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      color: #ff4f8b;
+    }
+    #countdown {
+      font-size: 1.2rem;
+      color: #912a51;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy 4-Month Anniversary 💖</h1>
+  <div id="message">
+    <div class="line">เค้ารู้นะว่าเบบี๋จะทวงสัญญาที่เค้าให้ไว้</div>
+    <div class="line">เค้าวางแผนเรื่องนี้พร้อมกับทำเว็บนี้เลย</div>
+    <div class="line">เบบี๋คงจะพูดว่า เค้าผิดสัญญา แน่เลย ว้ายยยย~</div>
+    <div class="line">ครบรอบสี่เดือนแล้วนะ</div>
+    <div class="line">เดือนนี้ถึงจะน่ารักบ้าง ไม่น่ารักบ้าง งอแงกันบ้าง</div>
+    <div class="line">แต่เค้าก็พยายามเข้าใจซินทุกเรื่องเลยนะ</div>
+    <div class="line">ไม่ต้องกลัวว่าพรุ่งนี้จะไม่มีเต้อ</div>
+    <div class="line">เต้อสัญญาว่าจะอยู่กับซินตลอดไปเลย</div>
+    <div class="line highlight">รักมากขึ้น มากขึ้นทุกวันเลย</div>
+    <div class="line">ขอบคุณที่เกิดมานะ</div>
+    <div class="line">ดีใจมากที่ได้ซินเป็นแฟน</div>
+    <div class="line">ขอบคุณที่ยังคงเป็นรอยยิ้มรายวันให้กับเต้อ</div>
+    <div class="line">และกินข้าวกับเบบี๋ อร่อยที่สุดในโลกเลย</div>
+    <div class="line">ทุกครั้งที่มองหน้าเบบี๋</div>
+    <div class="line">มันทำให้เต้อรู้สึกเหมือนได้กลับบ้าน</div>
+    <div class="line">ไม่ว่าข้างนอกจะเหนื่อยหรือเครียดแค่ไหน</div>
+    <div class="line">แค่ได้คุยกับเบบี๋ ได้ยินเสียง หรือได้กอดกัน</div>
+    <div class="line">ทุกอย่างก็เบาลงทันทีเลย</div>
+    <div class="line">เต้ออยากให้เรามีโมเมนต์เล็ก ๆ แบบนี้ไปเรื่อย ๆ</div>
+    <div class="line">ไม่ว่าจะอีกกี่เดือนกี่ปีก็ตาม</div>
+    <div class="line highlight">เพราะเบบี๋คือความสุขที่เต้ออยากรักษาไว้ตลอดไป</div>
+    <div class="line highlight">รักมาก ๆ เลยนะ</div>
+  </div>
+  <div id="countdown"></div>
+  <div id="surprise">แบร่ ่ ่ ่ ไม่มีอะไย แค่อยากบอกว่า รักนะ</div>
+  <a href="index.html" class="btn">กลับไปอ่านจดหมาย</a>
+
+  <script>
+    const lines = document.querySelectorAll('.line');
+    let delay = 0;
+    lines.forEach((line, index) => {
+      setTimeout(() => {
+        line.classList.add('show');
+      }, delay);
+      delay += 800; // 0.8 วินาทีต่อบรรทัด
+    });
+
+    // หลังจากบรรทัดสุดท้ายขึ้นแล้ว เริ่มนับถอยหลัง
+    const totalDelay = delay;
+    setTimeout(() => {
+      let counter = 10; // นับถอยหลัง 3 วินาที
+      const countdownEl = document.getElementById('countdown');
+      countdownEl.textContent = `เซอร์ไพรส์จะมาถึงใน ${counter}...`;
+      const timer = setInterval(() => {
+        counter--;
+        if (counter > 0) {
+          countdownEl.textContent = `มีบางสิ่งกำลังจะมา ${counter}...`;
+        } else {
+          clearInterval(timer);
+          countdownEl.style.display = 'none';
+          document.getElementById('surprise').style.opacity = 1;
+        }
+      }, 1000);
+    }, totalDelay + 500);
+  </script>
+</body>
+</html>
